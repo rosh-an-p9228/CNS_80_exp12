@@ -1,93 +1,121 @@
+PS C:\Users\fe\Desktop\cryptography-lab-experiments> python experiment_2b_secure_encryption/experiment2_cryptography.py
 ======================================================================
- AES SECURITY ANALYSIS: ECB vs CBC
+DESIGN AND ANALYSIS OF A SECURE ENCRYPTION SCHEME
 ======================================================================
-
-Original Plaintext:
-1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF
-
-Plaintext length: 64 bytes
 
 ----------------------------------------------------------------------
-AES-ECB ENCRYPTION
+1. CAESAR CIPHER
 ----------------------------------------------------------------------
-
-ECB Ciphertext:
-96b296ec8b41e3d5a850df7441ed2c3c96b296ec8b41e3d5a850df7441ed2c3c96b296ec8b41e3d5a850df7441ed2c3c96b296ec8b41e3d5a850df7441ed2c3c34af336c9f031b3556738c63e61ea2f6
-
-ECB Decrypted Plaintext:
-1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF
-
-ECB Ciphertext Blocks:
-Block 1: 96b296ec8b41e3d5a850df7441ed2c3c
-Block 2: 96b296ec8b41e3d5a850df7441ed2c3c
-Block 3: 96b296ec8b41e3d5a850df7441ed2c3c
-Block 4: 96b296ec8b41e3d5a850df7441ed2c3c
-Block 5: 34af336c9f031b3556738c63e61ea2f6
-
-Total ECB Blocks: 5
-Unique ECB Blocks: 2
+Plaintext : HELLO WORLD
+Key       : 3
+Ciphertext: KHOOR ZRUOG
+Decrypted : HELLO WORLD
 
 ----------------------------------------------------------------------
-AES-CBC ENCRYPTION
+2. EUCLIDEAN ALGORITHM
 ----------------------------------------------------------------------
+GCD(35, 26) = 1
 
-CBC Initialization Vector (IV):
-9d8bf3b93a1718680b928742b2382a8b
+----------------------------------------------------------------------
+3. MODULAR INVERSE
+----------------------------------------------------------------------
+a = 5
+modulus = 26
+GCD(5, 26) = 1
+Multiplicative inverse = 21
+(5 × 21) mod 26 = 1
 
-CBC Ciphertext:
-10cca7769f41bd299d150ed5ac44bd632f2287439c1a01ce6b78bf88fe1eb88b314e5337a6cb95cc0e1c552f18f4a1405f30ebe0612a228ad82bfed2e09c3ef93c46983519d8be4ebb411f90b475ba39
+----------------------------------------------------------------------
+4. AFFINE CIPHER
+----------------------------------------------------------------------
+gcd(5, 26) = 1
+Multiplicative inverse of 5 modulo 26 = 21
+Plaintext : HELLO WORLD
+Keys      : 5 8
+Ciphertext: RCLLA OAPLX
+Decrypted : HELLO WORLD
 
-CBC Decrypted Plaintext:
-1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF
+----------------------------------------------------------------------
+5. VIGENERE CIPHER
+----------------------------------------------------------------------
+Plaintext : HELLO WORLD
+Key       : KEY
+Ciphertext: RIJVS UYVJN
+Decrypted : HELLO WORLD
 
-CBC Ciphertext Blocks:
-Block 1: 10cca7769f41bd299d150ed5ac44bd63
-Block 2: 2f2287439c1a01ce6b78bf88fe1eb88b
-Block 3: 314e5337a6cb95cc0e1c552f18f4a140
-Block 4: 5f30ebe0612a228ad82bfed2e09c3ef9
-Block 5: 3c46983519d8be4ebb411f90b475ba39
+----------------------------------------------------------------------
+6. CONGRUENCE RELATION
+----------------------------------------------------------------------
+29 mod 26 = 3
+29 ≡ 3 (mod 26)
 
-Total CBC Blocks: 5
-Unique CBC Blocks: 5
+----------------------------------------------------------------------
+7. FERMAT'S LITTLE THEOREM
+----------------------------------------------------------------------
+3^(7-1) mod 7 = 1
+Fermat's Little Theorem verified.
+
+----------------------------------------------------------------------
+8. CHINESE REMAINDER THEOREM
+----------------------------------------------------------------------
+Given equations:
+x ≡ 2 (mod 3)
+x ≡ 3 (mod 5)
+x ≡ 2 (mod 7)
+
+CRT Solution: x = 23
+
+Verification:
+x mod 3 = 2
+x mod 5 = 3
+x mod 7 = 2
+
+----------------------------------------------------------------------
+9. AES-CBC
+----------------------------------------------------------------------
+Plaintext : HELLO WORLD
+AES Key   : 0123456789ABCDEF
+IV        : 133fe81a63d288c5637434e0fc539bae
+Ciphertext: b7267a479d54d187cb8186911ce044da
+Decrypted : HELLO WORLD
 
 ======================================================================
-SECURITY ANALYSIS
+FINAL VERIFICATION
 ======================================================================
+Caesar Cipher: PASS
+Affine Cipher: PASS
+Vigenere Cipher: PASS
+AES-CBC: PASS
+Euclidean Algorithm: PASS
+Modular Inverse: PASS
+Congruence: PASS
+Fermat's Little Theorem: PASS
+CRT: PASS
 
-ECB Observation:
-Repeated ciphertext blocks are present.
-Identical plaintext blocks produced identical ciphertext blocks.
-This reveals patterns in the plaintext.
-
-CBC Observation:
-Ciphertext blocks are different.
-The repeated plaintext pattern is hidden.
-
-======================================================================
-DECRYPTION VERIFICATION
-======================================================================
-ECB: Decryption successful.
-CBC: Decryption successful.
-
-======================================================================
-FINAL RESULT
-======================================================================
-EXPERIMENT 12: SUCCESS
+All cryptographic and mathematical tests completed successfully.
 
 ======================================================================
 CONCLUSION
 ======================================================================
 
-AES successfully encrypted and decrypted the given plaintext.
+The experiment demonstrates the use of classical and modern
+cryptographic techniques.
 
-ECB mode encrypts each plaintext block independently.
-Therefore, identical plaintext blocks produce identical
-ciphertext blocks, which can reveal plaintext patterns.
+Caesar, Affine and Vigenere ciphers demonstrate substitution
+and poly-alphabetic encryption.
 
-CBC mode uses an Initialization Vector (IV) for the first
-block and chains each subsequent block with the previous
-ciphertext block. Therefore, repeated plaintext blocks do
-not directly produce repeated ciphertext blocks.
+The Euclidean algorithm is used to determine GCD and supports
+the calculation of modular inverses.
 
-Hence, the experiment demonstrates the security implications
-of selecting an appropriate block cipher mode.
+Congruence, Fermat's Little Theorem and the Chinese Remainder
+Theorem demonstrate important mathematical foundations used
+in cryptography.
+
+AES-CBC demonstrates a modern symmetric-key encryption method.
+
+The successful decryption and mathematical verification
+confirm the correctness of the implemented operations.
+
+PS C:\Users\fe\Desktop\cryptography-lab-experiments> 
+
+
